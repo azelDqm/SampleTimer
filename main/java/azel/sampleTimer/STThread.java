@@ -23,7 +23,7 @@ public class STThread extends Thread{
 		while(SampleTimer.threadProc == 1)
 		{
 			//ブロードキャストメッセージの送信
-			STUtil.doBroadcastMessage(String.valueOf(SampleTimer.threadCount), this.sender, this.server);
+			STUtil.doBroadcastMessage2(String.valueOf(SampleTimer.threadCount), this.sender, this.server, SampleTimer.threadCount);
 			SampleTimer.threadCount++;
 
 			try {
@@ -34,6 +34,7 @@ public class STThread extends Thread{
 		}
 
 		SampleTimer.threadCount = -1;
+		STUtil.doBroadcastMessage2(String.valueOf(SampleTimer.threadCount), this.sender, this.server, SampleTimer.threadCount);
 		//タイマー処理終了後に処理を行いたい場合はここに。
 	}
 }
